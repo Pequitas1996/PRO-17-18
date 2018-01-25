@@ -4,10 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Set;
@@ -357,6 +359,15 @@ public class Practicas {
 					numeros[j] = aux;
 				}
 	}
+	
+	public void ordenaEnteros(ArrayList<Integer> numeros) {
+		ArrayList<Integer> ordena = new ArrayList<Integer>();
+		ordena.addAll(numeros);
+		Collections.sort(ordena); //ordena la lista del arraylist
+		System.out.println("Fin");
+					
+									
+	}
 
 	public void ordenaClasificacion(int[] numeros, String[] equipos) {
 		for (int i = 0; i < numeros.length - 1; i++)
@@ -402,21 +413,19 @@ public class Practicas {
 				}
 
 	}
-	
+
 	public ArrayList<String> ordenaCadenas(ArrayList<String> cadenas) {
-		ArrayList<String> resultado  = new ArrayList<String>();
+		ArrayList<String> resultado = new ArrayList<String>();
 		for (int i = 0; i < cadenas.size(); i++) {
-			
+
 		}
 		return resultado;
-		
-		/*for (int i = 0; i < cadenas.length - 1; i++)
-			for (int j = i + 1; j < cadenas.length; j++)
-				if (cadenas[i].compareTo(cadenas[j]) > 0) {
-					String aux = cadenas[i];
-					cadenas[i] = cadenas[j];
-					cadenas[j] = aux;
-				}*/
+
+		/*
+		 * for (int i = 0; i < cadenas.length - 1; i++) for (int j = i + 1; j <
+		 * cadenas.length; j++) if (cadenas[i].compareTo(cadenas[j]) > 0) { String aux =
+		 * cadenas[i]; cadenas[i] = cadenas[j]; cadenas[j] = aux; }
+		 */
 
 	}
 
@@ -656,6 +665,29 @@ public class Practicas {
 
 			}
 		}
+	}
+
+	public ArrayList<Integer> recorrerMatrizIrregularPorColumnas1(ArrayList<ArrayList<Integer>>matriz) {
+		ArrayList<Integer> resultado = new ArrayList<Integer>();
+		int JMAX = 0;
+		// obtenemos el numero maximo de columnas
+		for (int i = 0; i < matriz.size(); i++) {
+			if (matriz.get(i).size() > JMAX)
+				JMAX = matriz.size();
+		}
+
+		for (int j = 0; j < JMAX; j++) {
+			for (int i = 0; i < matriz.size(); i++) {
+				try {
+					System.out.println("[" + i + "][" + j + "]: " + matriz.get(i).get(j));
+				} catch (ArrayIndexOutOfBoundsException e) {
+					continue;
+				}
+
+			}
+		}
+
+		return resultado;
 	}
 
 	public void recorrerMatrizIrregularPorColumnas2(Integer[][] matriz) {

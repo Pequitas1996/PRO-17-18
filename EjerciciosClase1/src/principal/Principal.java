@@ -1,5 +1,6 @@
 package principal;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +16,7 @@ import modelo.Profesor;
 
 public class Principal {
 	// metodo por el que debe empezar la ejecución ..
-	public static void main(String[] args)  {
+	public static void main(String[] args) {
 		/*
 		 * Persona persona; persona = new Persona();
 		 * 
@@ -111,10 +112,11 @@ public class Principal {
 		// System.out.println("El numero "+ x + (practicas.esPrimo(x)?" ES ":" NO ES ")+
 		// " PRIMO" );
 		int[][] matriz = { { 3, 4, 8 }, { 6 }, { 5, 9 } };
+
 		Integer[][] matriz2 = { { 3, 4, null, 8, null, 12, 37, null }, { 6, 7, 12, null, 34, 21, null, 11 },
 				{ 5, null, 9 } };
-		// practicas.recorrerMatrizIrregularPorColumnas(matriz);
-		// practicas.recorrerMatrizIrregularPorColumnas2(matriz2);
+		practicas.recorrerMatrizIrregularPorColumnas(matriz);
+		practicas.recorrerMatrizIrregularPorColumnas2(matriz2);
 		// int[] primos = practicas.numerosPrimos(100);
 		// int [] fibonacci = practicas.numerosFibonacci(20);
 		// ArrayList<Estudiante> lista = practicas.introListas();
@@ -136,14 +138,29 @@ public class Principal {
 		HashMap<String, String> numero = practicas.LeerFicherpoHashMap("ficheros/personas.txt");
 
 		HashMap<String, ArrayList<Float>> mapa1 = practicas.resumenventasVendedor("ficheros/ventaDep.txt");
-	
+
 		ArrayList<Float> movs = new ArrayList<Float>();
 		movs.add(51.4f);
 		movs.add(40.0f);
 		movs.add(85.3f);
-		
-		float saldo7 = practicas.calculaSaldo(0, movs);
 
+		ArrayList<Integer> minimatriz = new ArrayList<Integer>();
+		minimatriz.add(7);
+		minimatriz.add(12);
+		minimatriz.add(8);
+		minimatriz.add(50);
+
+		ArrayList<ArrayList<Integer>> matriz1 = new ArrayList<ArrayList<Integer>>();
+		matriz1.add(minimatriz);
+
+		practicas.recorrerMatrizIrregularPorColumnas1(matriz1);
+
+		float saldo7 = practicas.calculaSaldo(0, movs);
+		ArrayList<Integer> lista8 = new ArrayList<Integer>();
+		lista8.add(78);
+		lista8.add(7);
+		lista8.add(85);
+		practicas.ordenaEnteros(lista8);
 		System.out.println("FIN");
 	}
 
