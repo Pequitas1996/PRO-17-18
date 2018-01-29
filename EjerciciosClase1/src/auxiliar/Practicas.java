@@ -1,10 +1,13 @@
 package auxiliar;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.nio.Buffer;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -83,6 +86,28 @@ public class Practicas {
 		}
 
 		return resultado;
+	}
+
+	public void generaDadosAleatorios(int cuantos, String rutaFichero) {
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter(rutaFichero));
+
+			Random rnd = new Random();
+			for (int i = 0; i < cuantos; i++) {
+				int numero = 1 + rnd.nextInt(6);
+				String registro = System.currentTimeMillis() + "&" + i + "&" + numero + "\n";
+
+				bw.close();
+
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} catch (NullPointerException e) {
+			System.out.println("EOF");
+		}
+
 	}
 
 	public void leerFicheroTexto() {
@@ -219,6 +244,20 @@ public class Practicas {
 
 		return resultado;
 
+	}
+
+	public HashMap<String, Float> resumenVentasPorVendedor(HashMap<String, ArrayList<Float>> ventas) {
+		HashMap<String, Float> resultado = new HashMap<String, Float>();
+		// recorrer mapa1 de entrada creando el de salida
+		Set<String> claves = ventas.keySet();
+		for (String clave : claves) {
+			ArrayList<Float> listaVentas = ventas.get(clave);
+			float acumuladoVendedor = 0;
+			for (Float importe : listaVentas)
+				acumuladoVendedor += importe;
+			resultado.put(clave, acumuladoVendedor);
+		}
+		return resultado;
 	}
 
 	public boolean esPrimo(int numero) {
@@ -359,14 +398,13 @@ public class Practicas {
 					numeros[j] = aux;
 				}
 	}
-	
+
 	public void ordenaEnteros(ArrayList<Integer> numeros) {
 		ArrayList<Integer> ordena = new ArrayList<Integer>();
 		ordena.addAll(numeros);
-		Collections.sort(ordena); //ordena la lista del arraylist
+		Collections.sort(ordena); // ordena la lista del arraylist
 		System.out.println("Fin");
-					
-									
+
 	}
 
 	public void ordenaClasificacion(int[] numeros, String[] equipos) {
@@ -417,6 +455,7 @@ public class Practicas {
 	public ArrayList<String> ordenaCadenas(ArrayList<String> cadenas) {
 		ArrayList<String> resultado = new ArrayList<String>();
 		for (int i = 0; i < cadenas.size(); i++) {
+			cadenas.addAll(resultado);
 
 		}
 		return resultado;
@@ -667,7 +706,7 @@ public class Practicas {
 		}
 	}
 
-	public ArrayList<Integer> recorrerMatrizIrregularPorColumnas1(ArrayList<ArrayList<Integer>>matriz) {
+	public ArrayList<Integer> recorrerMatrizIrregularPorColumnas1(ArrayList<ArrayList<Integer>> matriz) {
 		ArrayList<Integer> resultado = new ArrayList<Integer>();
 		int JMAX = 0;
 		// obtenemos el numero maximo de columnas

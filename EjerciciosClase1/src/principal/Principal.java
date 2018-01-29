@@ -138,6 +138,7 @@ public class Principal {
 		HashMap<String, String> numero = practicas.LeerFicherpoHashMap("ficheros/personas.txt");
 
 		HashMap<String, ArrayList<Float>> mapa1 = practicas.resumenventasVendedor("ficheros/ventaDep.txt");
+		HashMap<String, Float> resumenVentasVendedor = practicas.resumenVentasPorVendedor(mapa1);
 
 		ArrayList<Float> movs = new ArrayList<Float>();
 		movs.add(51.4f);
@@ -161,6 +162,8 @@ public class Principal {
 		lista8.add(7);
 		lista8.add(85);
 		practicas.ordenaEnteros(lista8);
+		int cuantos = 0;
+		practicas.generaDadosAleatorios(cuantos, "ficheros/dados.txt");
 		System.out.println("FIN");
 	}
 
