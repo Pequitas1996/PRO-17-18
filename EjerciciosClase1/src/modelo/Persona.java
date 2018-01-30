@@ -1,9 +1,15 @@
 package modelo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public abstract class Persona {
+public abstract class Persona implements Serializable {
+	//hay que volver tambien Serializble toda la estructura de los objetos.
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nif;
 	private String nombre;
 	private char sexo; // 'M' 'F'
