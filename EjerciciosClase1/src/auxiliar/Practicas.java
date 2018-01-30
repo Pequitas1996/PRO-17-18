@@ -2,10 +2,15 @@ package auxiliar;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.lang.reflect.Array;
 import java.nio.Buffer;
 import java.time.LocalDate;
@@ -87,8 +92,67 @@ public class Practicas {
 
 		return resultado;
 	}
+	
+	public static void grabarObjetosEnFichero(String fichero) { //forma de grabar objetos dentro de un fichero.
+		Estudiante est = new Estudiante(123, "435G", "Paco1", 'M', null, 181, null, null);
+		Estudiante est1 = new Estudiante(123, "222G", "Paco2", 'M', null, 180, null, null);
+		Estudiante est2= new Estudiante(123, "365G", "Paco3", 'M', null, 180, null, null);
+		
+		//abrir el fichero de objeto....
+		
+		try {
+			FileOutputStream fIs = new FileOutputStream(fichero);
+			ObjectOutputStream fObj = new ObjectOutputStream(fIs);
+			
+			//guardar los objetos de estudiantes en los ficheros...
+			
+			fObj.writeObject(est);
+			fObj.writeObject(est1);
+			fObj.writeObject(est2);
+			fObj.close();
+			fIs.close();
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("Fichero no encontrado");
+		} catch (IOException e){
+			System.out.println("Error IO");
+		}
+	
+		System.out.println("Fichero Creado");
+		
+	}
 
-	public void generaDadosAleatorios(int cuantos, String rutaFichero) {
+	public void leeObjetosDesdeFichero(String fichero) { 
+		//metodo para poder leer un  fichero que el formato .obj
+		try {
+			FileInputStream FIs = new FileInputStream(fichero);//crear otra variable para poder leer y recorrer el fichero
+			ObjectInputStream fObj = new ObjectInputStream(FIs);
+			
+			//recorre el fichero.
+			Estudiante est = null;
+			
+			
+			while(FIs.available() > 0) {
+				//leer el fichero
+				est= (Estudiante) fObj.readObject(); //devuelve un object.
+						//forma de conseguir un casting para el read object.
+				System.out.println(est.getNombre());
+			}
+			FIs.close();
+			fObj.close();
+			//hay que cerrar los dos ficheros .
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("Fichero no encontrado");
+		} catch (IOException e) {
+			System.out.println("Error IO");
+		} catch (ClassNotFoundException e) {
+			System.out.println("ClassNotFound");
+		}
+	}
+	
+
+	public void generaDadosAleatorios(int cuantos, String rutaFichero) { //forma de grabar informacion y creacion de un fichero.
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(rutaFichero));
 
@@ -110,7 +174,7 @@ public class Practicas {
 
 	}
 
-	public void leerFicheroTexto() {
+	public void leerFicheroTexto() { //forma de leer un fichero para sacar informacion.
 		try {
 			// Abrir el fichero
 			FileReader fr = new FileReader("ficheros/personas.txt");
