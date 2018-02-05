@@ -157,8 +157,8 @@ public class Principal {
 		practicas.recorrerMatrizIrregularPorColumnas1(matriz1);
 		
 		
-		Practicas.grabarObjetosEnFichero("ficheros/estudiantes.obj");
-		practicas.leeObjetosDesdeFichero("ficheros/estudiantes.obj");
+		Practicas.grabarObjetosEnFichero("ficheros/estudiantesLista.obj");
+		practicas.leeObjetosDesdeFichero("ficheros/estudiantesLista.obj");
 		//float saldo7 = practicas.calculaSaldo(0, movs);
 		ArrayList<Integer> lista8 = new ArrayList<Integer>();
 		lista8.add(78);
