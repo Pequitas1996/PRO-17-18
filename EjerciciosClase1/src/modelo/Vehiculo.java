@@ -76,4 +76,12 @@ public class Vehiculo {
 		this.precioVehiculo = precioVehiculo;
 	}
 
+
+@Override
+	public String toString() {
+		return "Vehiculo [id=" + id + ", matricula=" + matricula + ", marcaModelo=" + marcaModelo + ", fechaMatricula="
+				+ fechaMatricula + ", precioVehiculo=" + precioVehiculo + "]";
+	}
+	
+
 }

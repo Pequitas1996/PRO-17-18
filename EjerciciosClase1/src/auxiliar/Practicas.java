@@ -267,16 +267,25 @@ public class Practicas {
 			FileReader fr = new FileReader("ficheros/Vehiculos.txt");
 			BufferedReader br = new BufferedReader(fr);
 			String linea;
-			//LocalDate fechaHoy;
+			LocalDate fechaHoy;
 			// System.out.println(LocalDate.now());
 			// Leer el fichero linea a linea
 
 			while ((linea = br.readLine()) != null) {
-				String[] campos = linea.split("$");
-				Vehiculo veh1 = new Vehiculo(Integer.parseInt(campos[0]), campos[1],Integer.parseInt(campos[2]),
-						LocalDate.parse(campos[3]), Float.parseFloat(campos[4]));
-				
+				String[] campos = linea.split("#");
+				// System.out.println("---" + Integer.parseInt(campos[0])); forma de saber si
+				// funciona una linea;
+				int id = Integer.parseInt(campos[0]);
+				String matricula = campos[1];
+				int marcaModelo = Integer.parseInt(campos[2]);
+				int dia = Integer.parseInt(campos[3].split("/")[0]);
+				int mes = Integer.parseInt(campos[3].split("/")[1]);
+				int year = Integer.parseInt(campos[3].split("/")[2]);
+				LocalDate fechaMatricula = LocalDate.of(year, mes, dia);
+				float precio = Float.parseFloat(campos[4]);
+				Vehiculo veh1 = new Vehiculo(id, matricula, marcaModelo, fechaMatricula, precio);
 				resultado.add(veh1);
+				System.out.println(veh1);
 			}
 			// Cerrar fichero
 			fr.close();
