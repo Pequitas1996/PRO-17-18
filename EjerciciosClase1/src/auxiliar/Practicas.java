@@ -26,6 +26,7 @@ import modelo.Datos;
 import modelo.Equipo;
 import modelo.Estudiante;
 import modelo.Venta;
+import modelo.Vehiculo;
 
 public class Practicas {
 
@@ -257,6 +258,39 @@ public class Practicas {
 			System.out.println("EOF");
 		}
 		return resultado;
+	}
+
+	public ArrayList<Vehiculo> leerFicheroconArrayList(String fichero) {
+		ArrayList<Vehiculo> resultado = new ArrayList<Vehiculo>();
+		try {
+			// Abrir el fichero
+			FileReader fr = new FileReader("ficheros/Vehiculos.txt");
+			BufferedReader br = new BufferedReader(fr);
+			String linea;
+			//LocalDate fechaHoy;
+			// System.out.println(LocalDate.now());
+			// Leer el fichero linea a linea
+
+			while ((linea = br.readLine()) != null) {
+				String[] campos = linea.split("$");
+				Vehiculo veh1 = new Vehiculo(Integer.parseInt(campos[0]), campos[1],Integer.parseInt(campos[2]),
+						LocalDate.parse(campos[3]), Float.parseFloat(campos[4]));
+				
+				resultado.add(veh1);
+			}
+			// Cerrar fichero
+			fr.close();
+			br.close();
+
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} catch (NullPointerException e) {
+			System.out.println("EOF");
+		}
+		return resultado;
+
 	}
 
 	public HashMap<String, String> LeerFicherpoHashMap(String fichero) {

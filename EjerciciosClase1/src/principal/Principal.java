@@ -13,6 +13,7 @@ import modelo.Equipo;
 import modelo.Estudiante;
 import modelo.Persona;
 import modelo.Profesor;
+import modelo.Vehiculo;
 
 public class Principal {
 	// metodo por el que debe empezar la ejecución ..
@@ -111,12 +112,12 @@ public class Principal {
 		int x = 67;
 		// System.out.println("El numero "+ x + (practicas.esPrimo(x)?" ES ":" NO ES ")+
 		// " PRIMO" );
-		//int[][] matriz = { { 3, 4, 8 }, { 6 }, { 5, 9 } };
+		// int[][] matriz = { { 3, 4, 8 }, { 6 }, { 5, 9 } };
 
 		Integer[][] matriz2 = { { 3, 4, null, 8, null, 12, 37, null }, { 6, 7, 12, null, 34, 21, null, 11 },
 				{ 5, null, 9 } };
-		//practicas.recorrerMatrizIrregularPorColumnas(matriz);
-		//practicas.recorrerMatrizIrregularPorColumnas2(matriz2);
+		// practicas.recorrerMatrizIrregularPorColumnas(matriz);
+		// practicas.recorrerMatrizIrregularPorColumnas2(matriz2);
 		// int[] primos = practicas.numerosPrimos(100);
 		// int [] fibonacci = practicas.numerosFibonacci(20);
 		// ArrayList<Estudiante> lista = practicas.introListas();
@@ -131,7 +132,7 @@ public class Principal {
 		HashMap<String, Estudiante> mapa = practicas.introMapas();
 		Estudiante noexisto = mapa.get("noexisto");
 
-		//practicas.leerFicheroTexto();
+		// practicas.leerFicheroTexto();
 
 		ArrayList<String> fichero = practicas.LeerFicherpoArrayList("ficheros/personas.txt");
 
@@ -155,11 +156,10 @@ public class Principal {
 		matriz1.add(minimatriz);
 
 		practicas.recorrerMatrizIrregularPorColumnas1(matriz1);
-		
-		
+
 		Practicas.grabarObjetosEnFichero("ficheros/estudiantesLista.obj");
 		practicas.leeObjetosDesdeFichero("ficheros/estudiantesLista.obj");
-		//float saldo7 = practicas.calculaSaldo(0, movs);
+		// float saldo7 = practicas.calculaSaldo(0, movs);
 		ArrayList<Integer> lista8 = new ArrayList<Integer>();
 		lista8.add(78);
 		lista8.add(7);
@@ -167,6 +167,9 @@ public class Principal {
 		practicas.ordenaEnteros(lista8);
 		int cuantos = 0;
 		practicas.generaDadosAleatorios(cuantos, "ficheros/dados.txt");
+
+		ArrayList<Vehiculo> lista3 = practicas.leerFicheroconArrayList("ficheros/Vehiculos");
+
 		System.out.println("FIN");
 	}
 
