@@ -267,8 +267,6 @@ public class Practicas {
 			FileReader fr = new FileReader("ficheros/Vehiculos.txt");
 			BufferedReader br = new BufferedReader(fr);
 			String linea;
-			LocalDate fechaHoy;
-			// System.out.println(LocalDate.now());
 			// Leer el fichero linea a linea
 
 			while ((linea = br.readLine()) != null) {
@@ -299,6 +297,48 @@ public class Practicas {
 			System.out.println("EOF");
 		}
 		return resultado;
+
+	}
+
+	public static void grabarObjetosEnFicheroDeVehiculos(String fichero) { // forma de grabar objetos dentro de un
+																			// fichero.
+		Vehiculo vehi = new Vehiculo(001, "GC78454", 1575, null, 18 / 07 / 2000);
+		Vehiculo vehi1 = new Vehiculo(80, "7851VKM", 9874, null, 12 / 12 / 1996);
+		Vehiculo vehi2 = new Vehiculo(120, "3581JDN", 2581, null, 9 / 01 / 2016);
+		Vehiculo vehi3 = new Vehiculo(003, "7788POL", 3212, null, 11 / 11 / 2011);
+
+		// creamos el array list
+		ArrayList<Vehiculo> vehiculo = new ArrayList<Vehiculo>();
+
+		// añadir los cuatros vehiculos a la lita:
+		vehiculo.add(vehi);
+		vehiculo.add(vehi1);
+		vehiculo.add(vehi2);
+		vehiculo.add(vehi3);
+
+		// abrir el fichero de objeto....
+
+		try {
+			FileOutputStream fIs = new FileOutputStream(fichero);
+			ObjectOutputStream fObj = new ObjectOutputStream(fIs);
+
+			// guardar los objetos de estudiantes en los ficheros...
+
+			fObj.writeObject(vehiculo);
+
+			/*
+			 * fObj.writeObject(est); fObj.writeObject(est1); fObj.writeObject(est2);
+			 */
+			fObj.close();
+			fIs.close();
+
+		} catch (FileNotFoundException e) {
+			System.out.println("Fichero no encontrado");
+		} catch (IOException e) {
+			System.out.println("Error IO");
+		}
+
+		System.out.println("Fichero Creado");
 
 	}
 
@@ -380,6 +420,64 @@ public class Practicas {
 		}
 		return resultado;
 	}
+
+	///////////////////////////////// 20/02/2018//////////////////////////////////////////
+
+	public void inicializaVisitantesIsla(HashMap<Integer, ArrayList<Float>> resultado) {// forma de crear un metodo con los meses y islas a 0
+		
+		ArrayList<Float> visitantesMeses;
+		for (int isla = 0; isla < 7; isla++) {// recorre cada isla
+			visitantesMeses = new ArrayList<Float>();
+			for (int mes = 0; mes < 12; mes++) {// poner a 0 cada uno de los meses
+				visitantesMeses.add(0f);
+			}
+			resultado.put(isla, visitantesMeses);
+		}
+
+	}
+
+	public HashMap<Integer, ArrayList<Float>> visitantesIslaMes(String rutaFicherovisitantesIslas) {
+		HashMap<Integer, ArrayList<Float>> resultado = new HashMap<Integer, ArrayList<Float>>();
+		try {
+			// Abrir el fichero
+			FileReader fr = new FileReader("ficheros/visitantesIslaMes.txt");
+			BufferedReader br = new BufferedReader(fr);
+			String linea;
+			LocalDate fechaHoy;
+			// Leer el fichero linea a linea
+			// vamos a inizializar las islas a 0 en un metodo aparte, y mandamos la llamada
+			// al metodo, que sera el valor del HashMap
+			inicializaVisitantesIsla(resultado);
+			while (true) {
+
+				while ((linea = br.readLine()) != null) {
+					String[] campos = linea.split("@");
+					int isla = Integer.parseInt(campos[0]);
+					int mes = Integer.parseInt(campos[1]);
+					float numeroVisitantes = Float.parseFloat(campos[2]);
+					resultado.get(isla -1).set(mes -1, numeroVisitantes);
+				}
+				// Cerrar fichero
+				fr.close();
+				br.close();
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} catch (NullPointerException e) {
+			System.out.println("EOF");
+		}
+		return resultado;
+	}
+	
+	
+	public void listadoIslasMeses( String rutaFicherovisitantesIslas) {
+		 HashMap<Integer, ArrayList<Float>>  hm = visitantesIslaMes(rutaFicherovisitantesIslas);
+		//recorre el hm del metodo de arriba
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public boolean esPrimo(int numero) {
 
@@ -620,6 +718,33 @@ public class Practicas {
 		 * float saldoFinal = saldoInicial; for (int i = 0; i < movimientos.length; i++)
 		 * saldoFinal += movimientos[i]; return saldoFinal;
 		 */
+	}
+
+	public float calculaSaldo(float saldoInicial, String rutaFicheroMovs) {
+		float saldo = saldoInicial;
+		try {
+			// Abrir el fichero
+			FileReader fr = new FileReader("ficheros/personas.txt");
+			BufferedReader br = new BufferedReader(fr);
+			String linea;
+			// Leer el fichero linea a linea
+
+			while ((linea = br.readLine()) != null) {
+
+			}
+			// Cerrar fichero
+			fr.close();
+			br.close();
+
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} catch (NullPointerException e) {
+			System.out.println("EOF");
+		}
+
+		return saldo;
 	}
 
 	public int[] convierteCadenasANumeros(String[] cadenas) {

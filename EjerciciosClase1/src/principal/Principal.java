@@ -166,10 +166,17 @@ public class Principal {
 		lista8.add(85);
 		practicas.ordenaEnteros(lista8);
 		int cuantos = 0;
+	
 		practicas.generaDadosAleatorios(cuantos, "ficheros/dados.txt");
 
-		ArrayList<Vehiculo> lista3 = practicas.leerFicheroconArrayList("ficheros/Vehiculos");
+		ArrayList<Vehiculo> lista3 = practicas.leerFicheroconArrayList("ficheros/Vehiculos.txt");
+		Practicas.grabarObjetosEnFicheroDeVehiculos("ficheros/VehiculosLista.obj");
+		//practicas.leeObjetosDesdeFichero("ficheros/VehiculosLista.obj");
 
+
+		/////////////////////////////////20/02/2018///////////////////////////////////////
+		HashMap<Integer, ArrayList<Float>> xyz = practicas.visitantesIslaMes("ficheros/visitantesIslaMes.txt");
+		
 		System.out.println("FIN");
 	}
 
