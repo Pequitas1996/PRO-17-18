@@ -157,8 +157,8 @@ public class Principal {
 
 		practicas.recorrerMatrizIrregularPorColumnas1(matriz1);
 
-		Practicas.grabarObjetosEnFichero("ficheros/estudiantesLista.obj");
-		practicas.leeObjetosDesdeFichero("ficheros/estudiantesLista.obj");
+		//Practicas.grabarObjetosEnFichero("ficheros/estudiantesLista.obj");
+		//practicas.leeObjetosDesdeFichero("ficheros/estudiantesLista.obj");
 		// float saldo7 = practicas.calculaSaldo(0, movs);
 		ArrayList<Integer> lista8 = new ArrayList<Integer>();
 		lista8.add(78);
@@ -167,17 +167,22 @@ public class Principal {
 		practicas.ordenaEnteros(lista8);
 		int cuantos = 0;
 	
-		practicas.generaDadosAleatorios(cuantos, "ficheros/dados.txt");
+		//practicas.generaDadosAleatorios(cuantos, "ficheros/dados.txt");
 
-		ArrayList<Vehiculo> lista3 = practicas.leerFicheroconArrayList("ficheros/Vehiculos.txt");
-		Practicas.grabarObjetosEnFicheroDeVehiculos("ficheros/VehiculosLista.obj");
+		//ArrayList<Vehiculo> lista3 = practicas.leerFicheroconArrayList("ficheros/Vehiculos.txt");
+		//Practicas.grabarObjetosEnFicheroDeVehiculos("ficheros/VehiculosLista.obj");
 		//practicas.leeObjetosDesdeFichero("ficheros/VehiculosLista.obj");
 
 
 		/////////////////////////////////20/02/2018///////////////////////////////////////
-		HashMap<Integer, ArrayList<Float>> xyz = practicas.visitantesIslaMes("ficheros/visitantesIslaMes.txt");
+		//HashMap<Integer, ArrayList<Float>> xyz = practicas.visitantesIslaMes("ficheros/visitantesIslaMes.txt");
 		
+		
+		
+		/////////22/02/2018/////////
+		practicas.listadoIslasMeses("ficheros/visitantesIslaMes.txt");
 		System.out.println("FIN");
+		
 	}
 
 }

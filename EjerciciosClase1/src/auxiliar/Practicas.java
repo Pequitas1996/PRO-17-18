@@ -22,6 +22,8 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.Set;
 
+import javax.swing.SingleSelectionModel;
+
 import modelo.Datos;
 import modelo.Equipo;
 import modelo.Estudiante;
@@ -423,8 +425,9 @@ public class Practicas {
 
 	///////////////////////////////// 20/02/2018//////////////////////////////////////////
 
-	public void inicializaVisitantesIsla(HashMap<Integer, ArrayList<Float>> resultado) {// forma de crear un metodo con los meses y islas a 0
-		
+	public void inicializaVisitantesIsla(HashMap<Integer, ArrayList<Float>> resultado) {// forma de crear un metodo con
+																						// los meses y islas a 0
+
 		ArrayList<Float> visitantesMeses;
 		for (int isla = 0; isla < 7; isla++) {// recorre cada isla
 			visitantesMeses = new ArrayList<Float>();
@@ -455,7 +458,7 @@ public class Practicas {
 					int isla = Integer.parseInt(campos[0]);
 					int mes = Integer.parseInt(campos[1]);
 					float numeroVisitantes = Float.parseFloat(campos[2]);
-					resultado.get(isla -1).set(mes -1, numeroVisitantes);
+					resultado.get(isla - 1).set(mes - 1, numeroVisitantes);
 				}
 				// Cerrar fichero
 				fr.close();
@@ -470,11 +473,45 @@ public class Practicas {
 		}
 		return resultado;
 	}
-	
-	
+
+	/////////////////////////////////////// 22/02/2018///////////////TIENE QUE VER
+	/////////////////////////////////////// CON EL METODO DE
+	/////////////////////////////////////// ARRIBA/////////////////////////
 	public void listadoIslasMeses( String rutaFicherovisitantesIslas) {
-		 HashMap<Integer, ArrayList<Float>>  hm = visitantesIslaMes(rutaFicherovisitantesIslas);
-		//recorre el hm del metodo de arriba
+		ArrayList<Float> visitantesisla;
+		HashMap<Integer, ArrayList<Float>>  hm = visitantesIslaMes(rutaFicherovisitantesIslas);
+		 
+		 String[] islas = { "GRAN CANARIA", "LANZAROTE", "FUERTEVENTURA", "TENERIFE", "LA PALMA", "LA GOMERA", "EL HIERRO" };
+		 String[] meses = { "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTRE", "OCTUBRE", "NOVRE", "DICIEMBRE" };
+
+		 //recorre el hm
+		 float acumuladoMes [] = new float[12];
+		 Set<Integer> claves = hm.keySet();
+		 System.out.print("\t\t");
+		 //clave en singular es para acceder al arraylist de cada isla//
+		for (int i = 0; i < meses.length; i++) {
+			System.out.print(meses[i]+"\t");
+		}
+		System.out.println();
+		  for (Integer clave : claves) {
+			//islas[clave];
+			  visitantesisla = hm.get(clave);
+			System.out.print(islas[clave]+ "\t"); //imprimir el nombre de la isla
+			float acumuladoIsla=0f;
+			  //valor representa el numero de turistas que ha entrado en esa isla///
+			  for (int i = 0; i < visitantesisla.size(); i++) {
+				  acumuladoIsla += visitantesisla.get(i);
+				  acumuladoMes[0] += visitantesisla.get(i);
+				System.out.printf("%.0f\t", visitantesisla.get(i)*1000);
+			}
+			  System.out.print("\t total visitantes " + islas[clave] + " = " + acumuladoIsla);
+			  System.out.println();
+		}
+		  for (Float valor : acumuladoMes) {
+			  System.out.print("\t\t"+ valor);
+			
+		}
+	
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
