@@ -425,8 +425,7 @@ public class Practicas {
 
 	///////////////////////////////// 20/02/2018//////////////////////////////////////////
 
-	public void inicializaVisitantesIsla(HashMap<Integer, ArrayList<Float>> resultado) {// forma de crear un metodo con
-																						// los meses y islas a 0
+	public void inicializaVisitantesIsla(HashMap<Integer, ArrayList<Float>> resultado) {// forma de crear un metodo con los meses y islas a 0
 
 		ArrayList<Float> visitantesMeses;
 		for (int isla = 0; isla < 7; isla++) {// recorre cada isla
@@ -474,9 +473,7 @@ public class Practicas {
 		return resultado;
 	}
 
-	/////////////////////////////////////// 22/02/2018///////////////TIENE QUE VER
-	/////////////////////////////////////// CON EL METODO DE
-	/////////////////////////////////////// ARRIBA/////////////////////////
+	/////////////////////////////////////// 22/02/2018///////////////TIENE QUE VER CON EL METODO DE ARRIBA/////////////////////////
 	public void listadoIslasMeses( String rutaFicherovisitantesIslas) {
 		ArrayList<Float> visitantesisla;
 		HashMap<Integer, ArrayList<Float>>  hm = visitantesIslaMes(rutaFicherovisitantesIslas);
@@ -514,8 +511,63 @@ public class Practicas {
 	
 	}
 
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////01/03/2018//////Actividad De Comunidades Autonomas///////////////////////////////
+	
+	public String[] paso1RecorreComunidades() {
+		String [] comunidadesAutonomas = new String[19];
+		String comunidades = null;
+		try {
+			// Abrir el fichero
+			FileReader fr = new FileReader("ficheros/comunidades.txt");
+			BufferedReader br = new BufferedReader(fr);
+			String linea;
+			LocalDate fechaHoy;
+			// Leer el fichero linea a linea
+			while (true) {
 
+				while ((linea = br.readLine()) != null) {
+					String[] campos = linea.split("%");
+					comunidades= campos[1];
+					System.out.println(comunidades);
+				}
+				// Cerrar fichero
+				fr.close();
+				br.close(); 
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} catch (NullPointerException e) {
+			System.out.println("EOF");
+		}
+		
+		return comunidadesAutonomas;
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//////////////////////////////////////////////////////////////////////	
 	public boolean esPrimo(int numero) {
 
 		for (int i = 2; i < numero; i++) {

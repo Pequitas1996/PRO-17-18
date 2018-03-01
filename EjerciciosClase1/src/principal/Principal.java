@@ -180,7 +180,11 @@ public class Principal {
 		
 		
 		/////////22/02/2018/////////
-		practicas.listadoIslasMeses("ficheros/visitantesIslaMes.txt");
+		//practicas.listadoIslasMeses("ficheros/visitantesIslaMes.txt");
+		
+		///01/03/218/////
+		
+		practicas.paso1RecorreComunidades();
 		System.out.println("FIN");
 		
 	}
