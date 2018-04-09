@@ -31,7 +31,9 @@ import modelo.Venta;
 import modelo.Vehiculo;
 
 public class Practicas {
-
+	
+	// TERCERA EVALUACiON
+	// leer ficheros
 	// SEGUNDA EVALUACION
 
 	public ArrayList<Estudiante> introListas() {

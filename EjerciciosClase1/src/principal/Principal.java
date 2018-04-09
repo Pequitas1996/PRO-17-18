@@ -14,6 +14,7 @@ import modelo.Estudiante;
 import modelo.Persona;
 import modelo.Profesor;
 import modelo.Vehiculo;
+import modelo.dao.AccesoDatos;
 
 public class Principal {
 	// metodo por el que debe empezar la ejecución ..
@@ -87,7 +88,7 @@ public class Principal {
 		 * 
 		 * float saldoFinal = practicas.calculaSaldo(saldo, movimientos);
 		 */
-		int[] datos = practicas.generaAleatorios3(500, 1, 500);
+		//int[] datos = practicas.generaAleatorios3(500, 1, 500);
 		// practicas.ordenaEnteros(datos);
 		// Arrays.sort(datos);
 		String[] cadenas = { "perro", "gato", "alce" };
@@ -100,13 +101,13 @@ public class Principal {
 
 		int[] clasificacion = practicas.obtenerClasificacion2(goles);
 		String[] equipos = new Datos().getEquipos();
-		practicas.ordenaClasificacion(clasificacion, equipos);
+		//practicas.ordenaClasificacion(clasificacion, equipos);
 		for (int i = 0; i < equipos.length; i++) {
 			// System.out.println(equipos[i] + " \t" + clasificacion[i]);
 
 		}
 		int[][] puntosJornadas = new Datos().getPuntosJornada();
-		Equipo[] clasi = practicas.obtenerClasificacion3(puntosJornadas);
+		//Equipo[] clasi = practicas.obtenerClasificacion3(puntosJornadas);
 		String nif = "345239";
 		// System.out.println(practicas.validarNif(nif)?"OK":"KO");
 		int x = 67;
@@ -128,18 +129,18 @@ public class Principal {
 		lista.add("19");
 		lista.add("-12");
 		lista.add("1x2");
-		ArrayList<Integer> numeros = practicas.convierteCadenasANumeros(lista);
-		HashMap<String, Estudiante> mapa = practicas.introMapas();
-		Estudiante noexisto = mapa.get("noexisto");
+		//ArrayList<Integer> numeros = practicas.convierteCadenasANumeros(lista);
+		//HashMap<String, Estudiante> mapa = practicas.introMapas();
+		//Estudiante noexisto = mapa.get("noexisto");
 
 		// practicas.leerFicheroTexto();
 
-		ArrayList<String> fichero = practicas.LeerFicherpoArrayList("ficheros/personas.txt");
+		//ArrayList<String> fichero = practicas.LeerFicherpoArrayList("ficheros/personas.txt");
 
-		HashMap<String, String> numero = practicas.LeerFicherpoHashMap("ficheros/personas.txt");
+		//HashMap<String, String> numero = practicas.LeerFicherpoHashMap("ficheros/personas.txt");
 
-		HashMap<String, ArrayList<Float>> mapa1 = practicas.resumenventasVendedor("ficheros/ventaDep.txt");
-		HashMap<String, Float> resumenVentasVendedor = practicas.resumenVentasPorVendedor(mapa1);
+		//HashMap<String, ArrayList<Float>> mapa1 = practicas.resumenventasVendedor("ficheros/ventaDep.txt");
+		//HashMap<String, Float> resumenVentasVendedor = practicas.resumenVentasPorVendedor(mapa1);
 
 		ArrayList<Float> movs = new ArrayList<Float>();
 		movs.add(51.4f);
@@ -153,9 +154,9 @@ public class Principal {
 		minimatriz.add(50);
 
 		ArrayList<ArrayList<Integer>> matriz1 = new ArrayList<ArrayList<Integer>>();
-		matriz1.add(minimatriz);
+		//matriz1.add(minimatriz);
 
-		practicas.recorrerMatrizIrregularPorColumnas1(matriz1);
+		//practicas.recorrerMatrizIrregularPorColumnas1(matriz1);
 
 		//Practicas.grabarObjetosEnFichero("ficheros/estudiantesLista.obj");
 		//practicas.leeObjetosDesdeFichero("ficheros/estudiantesLista.obj");
@@ -163,7 +164,7 @@ public class Principal {
 		ArrayList<Integer> lista8 = new ArrayList<Integer>();
 		lista8.add(78);
 		lista8.add(7);
-		lista8.add(85);
+		//lista8.add(85);
 		practicas.ordenaEnteros(lista8);
 		int cuantos = 0;
 	
@@ -184,7 +185,16 @@ public class Principal {
 		
 		///01/03/218/////
 		
-		practicas.paso1RecorreComunidades();
+		//practicas.paso1RecorreComunidades();
+		
+		///////////////////////////////Tercer Trimestre////////////////////////////////////////
+		
+		AccesoDatos ad = new AccesoDatos();
+		//ad.conexion("localhost", "tienda", "root", "");
+		//ArrayList<HashMap<String, Object>> registroTablas = ad.getAllRecords("localhost", "tienda", "root", "", "books");
+		
+		ArrayList<ArrayList<Object>> registrosTabla = ad.getAllRecords2("localhost", "tienda", "root", "", "books");
+		
 		System.out.println("FIN");
 		
 	}
