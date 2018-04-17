@@ -29,11 +29,16 @@ import modelo.Equipo;
 import modelo.Estudiante;
 import modelo.Venta;
 import modelo.Vehiculo;
+import modelo.dao.AccesoDatos;
 
 public class Practicas {
-	
+
 	// TERCERA EVALUACiON
 	// leer ficheros
+	//////////////////// TERCER TRIMESTRE 17/04/2018 //////////////////// 
+	
+	
+
 	// SEGUNDA EVALUACION
 
 	public ArrayList<Estudiante> introListas() {
@@ -427,7 +432,8 @@ public class Practicas {
 
 	///////////////////////////////// 20/02/2018//////////////////////////////////////////
 
-	public void inicializaVisitantesIsla(HashMap<Integer, ArrayList<Float>> resultado) {// forma de crear un metodo con los meses y islas a 0
+	public void inicializaVisitantesIsla(HashMap<Integer, ArrayList<Float>> resultado) {// forma de crear un metodo con
+																						// los meses y islas a 0
 
 		ArrayList<Float> visitantesMeses;
 		for (int isla = 0; isla < 7; isla++) {// recorre cada isla
@@ -475,48 +481,53 @@ public class Practicas {
 		return resultado;
 	}
 
-	/////////////////////////////////////// 22/02/2018///////////////TIENE QUE VER CON EL METODO DE ARRIBA/////////////////////////
-	public void listadoIslasMeses( String rutaFicherovisitantesIslas) {
+	/////////////////////////////////////// 22/02/2018///////////////TIENE QUE VER
+	/////////////////////////////////////// CON EL METODO DE
+	/////////////////////////////////////// ARRIBA/////////////////////////
+	public void listadoIslasMeses(String rutaFicherovisitantesIslas) {
 		ArrayList<Float> visitantesisla;
-		HashMap<Integer, ArrayList<Float>>  hm = visitantesIslaMes(rutaFicherovisitantesIslas);
-		 
-		 String[] islas = { "GRAN CANARIA", "LANZAROTE", "FUERTEVENTURA", "TENERIFE", "LA PALMA", "LA GOMERA", "EL HIERRO" };
-		 String[] meses = { "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTRE", "OCTUBRE", "NOVRE", "DICIEMBRE" };
+		HashMap<Integer, ArrayList<Float>> hm = visitantesIslaMes(rutaFicherovisitantesIslas);
 
-		 //recorre el hm
-		 float acumuladoMes [] = new float[12];
-		 Set<Integer> claves = hm.keySet();
-		 System.out.print("\t\t");
-		 //clave en singular es para acceder al arraylist de cada isla//
+		String[] islas = { "GRAN CANARIA", "LANZAROTE", "FUERTEVENTURA", "TENERIFE", "LA PALMA", "LA GOMERA",
+				"EL HIERRO" };
+		String[] meses = { "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTRE",
+				"OCTUBRE", "NOVRE", "DICIEMBRE" };
+
+		// recorre el hm
+		float acumuladoMes[] = new float[12];
+		Set<Integer> claves = hm.keySet();
+		System.out.print("\t\t");
+		// clave en singular es para acceder al arraylist de cada isla//
 		for (int i = 0; i < meses.length; i++) {
-			System.out.print(meses[i]+"\t");
+			System.out.print(meses[i] + "\t");
 		}
 		System.out.println();
-		  for (Integer clave : claves) {
-			//islas[clave];
-			  visitantesisla = hm.get(clave);
-			System.out.print(islas[clave]+ "\t"); //imprimir el nombre de la isla
-			float acumuladoIsla=0f;
-			  //valor representa el numero de turistas que ha entrado en esa isla///
-			  for (int i = 0; i < visitantesisla.size(); i++) {
-				  acumuladoIsla += visitantesisla.get(i);
-				  acumuladoMes[0] += visitantesisla.get(i);
-				System.out.printf("%.0f\t", visitantesisla.get(i)*1000);
+		for (Integer clave : claves) {
+			// islas[clave];
+			visitantesisla = hm.get(clave);
+			System.out.print(islas[clave] + "\t"); // imprimir el nombre de la isla
+			float acumuladoIsla = 0f;
+			// valor representa el numero de turistas que ha entrado en esa isla///
+			for (int i = 0; i < visitantesisla.size(); i++) {
+				acumuladoIsla += visitantesisla.get(i);
+				acumuladoMes[0] += visitantesisla.get(i);
+				System.out.printf("%.0f\t", visitantesisla.get(i) * 1000);
 			}
-			  System.out.print("\t total visitantes " + islas[clave] + " = " + acumuladoIsla);
-			  System.out.println();
+			System.out.print("\t total visitantes " + islas[clave] + " = " + acumuladoIsla);
+			System.out.println();
 		}
-		  for (Float valor : acumuladoMes) {
-			  System.out.print("\t\t"+ valor);
-			
+		for (Float valor : acumuladoMes) {
+			System.out.print("\t\t" + valor);
+
 		}
-	
+
 	}
 
-	//////////////////////////////////////01/03/2018//////Actividad De Comunidades Autonomas///////////////////////////////
-	
+	////////////////////////////////////// 01/03/2018//////Actividad De Comunidades
+	////////////////////////////////////// Autonomas///////////////////////////////
+
 	public String[] paso1RecorreComunidades() {
-		String [] comunidadesAutonomas = new String[19];
+		String[] comunidadesAutonomas = new String[19];
 		String comunidades = null;
 		try {
 			// Abrir el fichero
@@ -529,12 +540,12 @@ public class Practicas {
 
 				while ((linea = br.readLine()) != null) {
 					String[] campos = linea.split("%");
-					comunidades= campos[1];
+					comunidades = campos[1];
 					System.out.println(comunidades);
 				}
 				// Cerrar fichero
 				fr.close();
-				br.close(); 
+				br.close();
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println(e.getMessage());
@@ -543,33 +554,12 @@ public class Practicas {
 		} catch (NullPointerException e) {
 			System.out.println("EOF");
 		}
-		
+
 		return comunidadesAutonomas;
-		
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//////////////////////////////////////////////////////////////////////	
+
+	//////////////////////////////////////////////////////////////////////
 	public boolean esPrimo(int numero) {
 
 		for (int i = 2; i < numero; i++) {

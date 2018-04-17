@@ -181,7 +181,7 @@ public class Principal {
 		
 		
 		/////////22/02/2018/////////
-		//practicas.listadoIslasMeses("ficheros/visitantesIslaMes.txt");
+		//9practicas.listadoIslasMeses("ficheros/visitantesIslaMes.txt");
 		
 		///01/03/218/////
 		
@@ -193,8 +193,9 @@ public class Principal {
 		//ad.conexion("localhost", "tienda", "root", "");
 		//ArrayList<HashMap<String, Object>> registroTablas = ad.getAllRecords("localhost", "tienda", "root", "", "books");
 		
-		ArrayList<ArrayList<Object>> registrosTabla = ad.getAllRecords2("localhost", "tienda", "root", "", "books");
+		//ArrayList<ArrayList<Object>> registrosTabla = ad.getAllRecords2("localhost", "tienda", "root", "", "books");
 		
+		ad.consultaPadronCAProvincias();
 		System.out.println("FIN");
 		
 	}

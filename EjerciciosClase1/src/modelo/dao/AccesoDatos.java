@@ -118,5 +118,27 @@ public class AccesoDatos {
 		}
 		return null;	
 	}
+	
+	public void consultaPadronCAProvincias(){
+		//conectar base de datos.//
+		try {
+			Connection conexion = this.conexion("localhost", "paro", "root", "");
+			String sql = "select CA as Comunidad, provincia, sum(padron) as padron from padron pa inner join provincias p1, comunidadesautonomas c1, municipios m1 "
+					+ " where pa.CodMunicipio = m1.CodMunicipio and m1.CodProvincia = p1.CodProvincia and p1.CodCA = c1.CodCA group by p1.CodProvincia order by c1.CA, p1.Provincia";
+			Statement stm = conexion.createStatement();
+			ResultSet rs = stm.executeQuery(sql);
+			
+			while(rs.next()) {
+				System.out.println(rs.getString(1)+ "," + rs.getString(2) + " = " + rs.getInt(3));
+			}
+			
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		//hacer consulta,
+		//listar desde resulset.
+
+	}
 
 }
