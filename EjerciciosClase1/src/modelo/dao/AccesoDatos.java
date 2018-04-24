@@ -33,6 +33,7 @@ public class AccesoDatos {
 			// ruta necesaria para poder conectar con cualquier base de datos exterior con
 			// la configuracion del driver manager.
 			System.out.println("¡¡Has conectado con la  base de datos!!");
+			
 			return con;
 		} catch (InstantiationException e) {
 			System.out.println(e.getMessage());
@@ -128,8 +129,22 @@ public class AccesoDatos {
 			Statement stm = conexion.createStatement();
 			ResultSet rs = stm.executeQuery(sql);
 			
+			int subtotal= 0, total= 0;
+			String ca_ant= "";
+			
 			while(rs.next()) {
-				System.out.println(rs.getString(1)+ "," + rs.getString(2) + " = " + rs.getInt(3));
+				//System.out.println();
+				//System.out.println(rs.getString(1)+ "," + rs.getString(2) + " = " + rs.getInt(3));
+				if (rs.getString(1).equals(ca_ant) && !ca_ant.equals("")) {
+					System.out.println("COMUNIDAD AUTONOMA : " +  rs.getString(1));
+					total +=subtotal;
+					System.out.println("COMUNIDAD AUTONOMA : " + ca_ant + " ," + subtotal);
+					subtotal = 0;
+				
+					ca_ant= rs.getString(1);	
+				}
+				System.out.println("\t\t" + rs.getString(2) + " = " + rs.getInt(3));
+				subtotal +=rs.getInt(3);
 			}
 			
 			
